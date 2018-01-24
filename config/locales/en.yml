@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  post_error: "Post doesn't exist"
+  post_success: "Create post success"

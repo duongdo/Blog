@@ -1,2 +1,42 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+$alto: #ddd;
+$dusty-gray: #9b9b9b;
+
+.nomargin{
+  margin: 0;
+}
+
+.nopadding{
+  padding: 0;
+}
+
+.text-muted{
+  font-size: 12px;
+  padding-left: 10px;
+  color: $dusty-gray;
+}
+.wrap-text{
+  flex-wrap: wrap;
+  display: flex;
+}
+
+#comment_part{
+  #comment_form{
+    textarea{
+      height: 100px;
+      margin-bottom: 10px;
+    }
+  }
+  .comment{
+    border: 1px solid $dusty-gray;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+
+.overview{
+  text-align: right;
+}

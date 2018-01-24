@@ -1,0 +1,12 @@
+<div class="col-xs-12 nopadding comment">
+  <div class="col-xs-8 nopadding">
+    <%= image_tag c.user.avatar.url, class: "img-circle", width: 30, height: 30 %>
+    <%= c.user.email %>
+  </div>
+  <div class="col-xs-4 pull-right">
+    <%= time_ago_in_words(c.created_at) %>
+  </div>
+  <div class="col-xs-12">
+    <%= c.content %>
+  </div>
+</div>

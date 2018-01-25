@@ -2,6 +2,7 @@
 @import 'bootstrap';
 
 $alto: #ddd;
+$blue: #286090;
 $dusty-gray: #9b9b9b;
 
 .nomargin{
@@ -22,18 +23,36 @@ $dusty-gray: #9b9b9b;
   display: flex;
 }
 
-#comment_part{
-  #comment_form{
-    textarea{
-      height: 100px;
-      margin-bottom: 10px;
+.liked{
+  color: $blue;
+}
+
+#main-path{
+  border-right: 1px solid $dusty-gray;
+  img{
+    max-width: 100%;
+  }
+  #comment_part{
+    #comment_form{
+      textarea{
+        height: 100px;
+        margin-bottom: 10px;
+      }
+    }
+    .comment{
+      border: 1px solid $dusty-gray;
+      border-radius: 5px;
+      margin-top: 10px;
+      padding: 10px;
     }
   }
-  .comment{
-    border: 1px solid $dusty-gray;
-    border-radius: 5px;
-    margin-top: 10px;
-    padding: 10px;
+}
+
+.col-xs-1{
+  font-size: 20px;
+  button{
+    border: none;
+    background: none;
   }
 }
 

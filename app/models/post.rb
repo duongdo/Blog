@@ -7,4 +7,7 @@ class Post < ApplicationRecord
 
   scope :load_info,->{select(:title, :created_at, :user_id, :id).includes(:user)
     .order updated_at: :desc}
+
+  validates :title, presence: true
+  validates :content, presence: true
 end

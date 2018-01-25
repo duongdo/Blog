@@ -1,4 +1,20 @@
-<div class="col-xs-8 nopadding">
+<div class="col-xs-1">
+  <% if user_signed_in? && like?(@post.id) %>
+    <div class="col-xs-7 nopadding">
+      <%= button_to likes_path(@post.id), remote: true, class: "clear" do %>
+        <i class="glyphicon glyphicon-thumbs-up liked" id="like_<%= @post.id %>" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="col-md-4 col-sm-4 col-lg-4">
+      <%= button_to likes_path(@post.id), remote: true, class: "clear" do %>
+        <i class="glyphicon glyphicon-thumbs-up" id="like_<%= @post.id %>" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <span id="like_count_<%= @post.id %>"><%= @post.likes.count %></span>
+</div>
+<div class="col-xs-8 nopadding" id="main-path">
   <div class="col-xs-12">
     <div class="col-xs-12">
       <h3><b><%= @post.title %></b></h3>
@@ -15,18 +31,26 @@
       <%= @post.content.html_safe %>
     </div>
   </div>
+  <div class="col-xs-12">
+    <hr>
+  </div>
   <div class="col-xs-12 nopadding" id="comment_part">
     <div class="col-xs-12">
-      <div class="col-xs-12" id="comment_form">
-        <%= form_for @comment, remote: true do |f| %>
-          <%= f.hidden_field :post_id, value: @post.id %>
-          <div class="col-xs-12 nopadding">
-            <%= f.text_area :content, class: "form-control" %>
-          </div>
-          <%= f.submit class: "btn btn-primary pull-right" %>
-        <% end %>
-      </div>
+      <h4><%= t ".comments" %></h4>
     </div>
+    <% if user_signed_in? %>
+      <div class="col-xs-12">
+        <div class="col-xs-12" id="comment_form">
+          <%= form_for @comment, remote: true do |f| %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+            <div class="col-xs-12 nopadding">
+              <%= f.text_area :content, class: "form-control" %>
+            </div>
+            <%= f.submit class: "btn btn-primary pull-right" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     <div class="col-xs-12">
       <div class="col-xs-12" id="comment_list">
         <%= render partial: "posts/comment", collection: @comments, as: :c %>
@@ -37,9 +61,6 @@
     </div>
   </div>
 </div>
-<div class="col-xs-1">
-
-</div>
 <div class="col-xs-3">
-  <%= image_tag @post.user.avatar.url %>
+  <%= image_tag @post.user.avatar.url, class: "img-circle", width: 100, height: 100 %>
 </div>

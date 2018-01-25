@@ -1,0 +1,6 @@
+if(<%= @temp %>){
+  $('#like_<%= @post %>').addClass('liked');
+} else {
+  $('#like_<%= @post %>').removeClass('liked');
+}
+$('#like_count_<%= @post %>').html('<%= @current_post.likes.count %>');

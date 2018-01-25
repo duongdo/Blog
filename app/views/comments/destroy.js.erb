@@ -1,3 +1,2 @@
 $('#comment_list').html('<%= j render partial: "posts/comment", collection: @comments, as: :c %>')
 $('#paginator').html('<%= j paginate @comments, theme: "twitter-bootstrap-3", remote: true %>')
-$('.overview').html('<span class="glyphicon glyphicon-comment"></span> <%= @comments.total_count %>')

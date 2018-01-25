@@ -1,0 +1,21 @@
+<div class="col-xs-12">
+  <% if @friend == t(".add_friend") %>
+    <%= form_tag friends_path, method: :post, remote: true do %>
+      <%= hidden_field_tag :post_id, @post.id %>
+      <%= hidden_field_tag :friend_id, @post.user.id %>
+      <%= submit_tag @friend, class: "btn btn-primary" %>
+    <% end %>
+  <% elsif @friend == t(".accept_friend") %>
+    <%= form_tag friend_path, method: :put, remote: true do %>
+      <%= hidden_field_tag :post_id, @post.id %>
+      <%= hidden_field_tag :friend_id, @post.user.id %>
+      <%= submit_tag @friend, class: "btn btn-primary" %>
+    <% end %>
+  <% else %>
+    <%= form_tag delete_friend_path, method: :get, remote: true do %>
+      <%= hidden_field_tag :post_id, @post.id %>
+      <%= hidden_field_tag :friend_id, @post.user.id %>
+      <%= submit_tag t(".unfriend"), class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>

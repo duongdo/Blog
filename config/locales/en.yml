@@ -37,7 +37,22 @@ en:
   posts:
     show:
       comments: "Comments"
+      friend: "Friend"
+      accept_friend: "Accept Request"
+      sent_friend: "Sent Request"
+      add_friend: "Add Friend"
+    friend:
+      friend: "Friend"
+      accept_friend: "Accept Request"
+      sent_friend: "Sent Request"
+      add_friend: "Add Friend"
+      unfriend: "Unfriend"
 
   name_project: "Dev Blog"
   post_error: "Post doesn't exist"
   post_success: "Create post success"
+  friend: "Friend"
+  accept_friend: "Accept Request"
+  sent_friend: "Sent Request"
+  add_friend: "Add Friend"
+  wait_request: "Wait user accept friend request"

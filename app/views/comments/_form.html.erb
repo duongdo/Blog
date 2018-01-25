@@ -1,0 +1,6 @@
+<%= form_for @comment, remote: true do |f| %>
+  <%= f.text_area :content, class: "form-control" %>
+  <div class="col-xs-3 pull-right">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

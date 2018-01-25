@@ -1,2 +1,37 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="col-xs-12">
+  <% if user_signed_in? %>
+    <div class="col-xs-12">
+      <div class="col-xs-3 pull-right">
+        <%= link_to new_post_path, class: "btn btn-primary" do %>
+          Create post
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% @posts.each do |p| %>
+  <div class="col-xs-12">
+    <div class="col-xs-1">
+      <%= image_tag p.user.avatar.url(:thumb), class: "img-circle", width: 50, height: 50 %>
+    </div>
+    <div class="col-xs-10">
+      <div class="col-xs-12">
+        <div class="col-xs-12 nopadding wrap-text">
+          <%= link_to p.user.email, user_path(id: p.user_id) %>
+          <div class="text-muted">
+            <span><%= time_ago_in_words(p.created_at) %> ago</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <%= link_to post_path(id: p.id) do %>
+          <h3 class="nomargin"><b><%= p.title %></b></h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <hr>
+  </div>
+  <% end %>
+</div>

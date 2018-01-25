@@ -1,18 +1,20 @@
 <div class="col-xs-1">
-  <% if user_signed_in? && like?(@post.id) %>
-    <div class="col-xs-7 nopadding">
-      <%= button_to likes_path(@post.id), remote: true, class: "clear" do %>
-        <i class="glyphicon glyphicon-thumbs-up liked" id="like_<%= @post.id %>" aria-hidden="true"></i>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="col-md-4 col-sm-4 col-lg-4">
-      <%= button_to likes_path(@post.id), remote: true, class: "clear" do %>
-        <i class="glyphicon glyphicon-thumbs-up" id="like_<%= @post.id %>" aria-hidden="true"></i>
-      <% end %>
-    </div>
-  <% end %>
-  <span id="like_count_<%= @post.id %>"><%= @post.likes.count %></span>
+  <div class="col-xs-12 nopadding">
+    <% if user_signed_in? && like?(@post.id) %>
+      <div class="col-xs-7 nopadding">
+        <%= button_to likes_path(@post.id), remote: true, class: "clear" do %>
+          <i class="glyphicon glyphicon-thumbs-up liked" id="like_<%= @post.id %>" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-xs-7 nopadding">
+        <%= button_to likes_path(@post.id), remote: true, class: "clear" do %>
+          <i class="glyphicon glyphicon-thumbs-up" id="like_<%= @post.id %>" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <span id="like_count_<%= @post.id %>"><%= @post.likes.count %></span>
+  </div>
 </div>
 <div class="col-xs-8 nopadding" id="main-path">
   <div class="col-xs-12">
@@ -21,10 +23,12 @@
     </div>
     <div class="col-xs-12">
       <div class="col-xs-6 nopadding text-muted">
+        <span class="glyphicon glyphicon-calendar"></span>
         <%= @post.created_at.strftime("%d/%m/%y: %H:%M:%S") %>
       </div>
       <div class="col-xs-6 overview text-muted">
-        <span class="glyphicon glyphicon-comment"></span> <%= @comments.total_count %>
+        <span class="glyphicon glyphicon-comment"></span>
+        <%= @comments.total_count %>
       </div>
     </div>
     <div class="col-xs-12">
@@ -62,5 +66,14 @@
   </div>
 </div>
 <div class="col-xs-3">
-  <%= image_tag @post.user.avatar.url, class: "img-circle", width: 100, height: 100 %>
+  <div class="col-xs-12">
+    <%= image_tag @post.user.avatar.url, class: "img-circle", width: 100, height: 100 %>
+  </div>
+  <% if user_signed_in? %>
+    <% if @post.user.id != current_user.id %>
+      <div class="col-xs-12 nopadding" id="friend_button">
+        <%= render "posts/friend" %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

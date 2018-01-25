@@ -13,6 +13,10 @@ $dusty-gray: #9b9b9b;
   padding: 0;
 }
 
+h2{
+  text-align: center
+}
+
 .text-muted{
   font-size: 12px;
   padding-left: 10px;
@@ -53,6 +57,10 @@ $dusty-gray: #9b9b9b;
   button{
     border: none;
     background: none;
+  }
+  span.glyphicon{
+    color: $alto;
+    font-size: 10px;
   }
 }
 
